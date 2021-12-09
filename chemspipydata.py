@@ -10,10 +10,11 @@ def converter(file_name):
         pubchem_file = csv.reader(chemspipydata_file, delimiter = "\t")
         i = 0
         SMILES = []
-        for line in pubchem_file:
-            if len(line) < 4:
+        for aline in pubchem_file:
+            if not aline or len(aline) < 4:
+                SMILES.append("null")
                 continue
-            SMILES.append(line[3])
+            SMILES.append(aline[3])
         for line in tsv_file:
             if len(line) < 4:
                 continue
